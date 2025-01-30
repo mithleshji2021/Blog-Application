@@ -112,7 +112,7 @@ function Header() {
             ))}
             {
               authStatus && (
-                <li className='text-center bg-slate-700 rounded-lg '>
+                <li onClick={() => setIsMenuOpen(false)} className='text-center bg-slate-700 rounded-lg '>
                   <LogoutBtn />
                 </li>
               )
