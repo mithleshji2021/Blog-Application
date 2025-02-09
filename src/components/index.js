@@ -15,6 +15,7 @@ import AddPost from "../pages/AddPost";
 import EditPost from "../pages/EditPost";
 import Post from "../pages/Post";
 import Select from "./Select";
+import Admin from "./Admin";
 export {
     Header,
     Footer,
@@ -32,5 +33,6 @@ export {
     AddPost,
     EditPost,   
     Post,
-    Select
+    Select,
+    Admin
 }
