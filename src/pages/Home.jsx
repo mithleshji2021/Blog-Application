@@ -33,7 +33,7 @@ function Home() {
             <div className='w-full py-8 mt-4 text-center'>
                 <Container>
                     <div className=' flex justify-center'>
-                        <img className='rounded-xl w-[50rem]' src="src/assets/Purple and Black Metallic Blob Tech Company Presentation_20250608_172119_0000.jpg" alt="Login to read post" />
+                        <img className='rounded-xl w-[50rem]' src="images/home-image" alt="Login to read post" />
                     </div>
                     {/* <div className='flex flex-wrap'>
                         <div className='p-2 w-full'>
