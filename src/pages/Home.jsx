@@ -4,7 +4,7 @@ import { Container } from '../components'
 import { PostCard } from '../components'
 import { useSelector } from 'react-redux'
 import LoadingPage from './LoadingPage'
-import homeImage from '../../src/images/homeImage'
+import homeImage from '../../src/images/homeImage.jpg'
 
 function Home() {
     const [posts, setPosts] = useState([])
