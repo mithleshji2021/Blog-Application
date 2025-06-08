@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import databaseService from '../appwrite/database'
 import { Container } from '../components'
 import { PostCard } from '../components'
@@ -10,27 +10,28 @@ function Home() {
     const [posts, setPosts] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
-    const userStatus = useSelector((state)=>state.auth.status)
-    
-    
-    useEffect(()=>{
-        if(userStatus){
-            databaseService.getPosts().then((posts)=>{
-                if(posts){
+    const userStatus = useSelector((state) => state.auth.status)
+
+
+    useEffect(() => {
+        if (userStatus) {
+            databaseService.getPosts().then((posts) => {
+                if (posts) {
                     setPosts(posts.documents)
                 }
-                 
-            })
-        }
-        setIsLoading(false)
-    },[])
 
-    if(isLoading){
-        return <LoadingPage/>
+            })
+
+            setIsLoading(false)
+        }
+    }, [])
+
+    if (isLoading) {
+        return <LoadingPage />
     }
 
-    if(!userStatus){
-        return(
+    if (!userStatus) {
+        return (
             <div className='w-full py-8 mt-4 text-center'>
                 <Container>
                     <div className=' flex justify-center'>
@@ -53,9 +54,9 @@ function Home() {
         <div className='w-full py-8 '>
             <Container>
                 <div className='flex flex-col md:flex-row flex-wrap'>
-                    {posts.map((post)=>(
+                    {posts.map((post) => (
                         <div key={post.$id} className='p-2 w-full md:w-1/4'>
-                            <PostCard {...post}/>
+                            <PostCard {...post} />
                         </div>
                     ))}
                 </div>
@@ -63,7 +64,7 @@ function Home() {
         </div>
     )
 
-  
+
 }
 
 export default Home
