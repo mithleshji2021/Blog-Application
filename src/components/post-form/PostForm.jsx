@@ -144,7 +144,7 @@ export default function PostForm({ post }) {
                 <Select
                     options={["active", "inactive"]}
                     label="Status"
-                    className="mb-4 focus:bg-[#28087d] bg-[#28087d] text-white border border-gray-400"
+                    className="mb-4 cursor-pointer focus:bg-[#28087d] bg-[#28087d] text-white border border-gray-400"
                     {...register("status", { required: true })}
                 />
                 <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
