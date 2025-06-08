@@ -5,6 +5,7 @@ import databaseService from "../../appwrite/database";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import LoadingPage from "../../pages/LoadingPage";
 
 export default function PostForm({ post }) {
 
@@ -22,7 +23,7 @@ export default function PostForm({ post }) {
     const userData = useSelector((state) => state.auth.userData);
 
     const submit = async (data) => {
-        
+
         if (post) {
             setLoading(true)
             const file = data.image[0] ? await databaseService.uploadFile(data.image[0]) : null;
@@ -41,7 +42,7 @@ export default function PostForm({ post }) {
             }
             setLoading(false)
         }
-        
+
         else {
             setLoading(true)
             const file = data.image[0] ? await databaseService.uploadFile(data.image[0]) : null;
@@ -50,7 +51,7 @@ export default function PostForm({ post }) {
             if (file) {
                 const fileId = file.$id;
                 data.featuredImage = fileId;
-                const dbPost = await databaseService.createPost({ ...data, userId: userData?.$id || ""  });
+                const dbPost = await databaseService.createPost({ ...data, userId: userData?.$id || "" });
 
                 if (dbPost?.$id) {
                     navigate(`/post/${dbPost.$id}`);
@@ -81,31 +82,29 @@ export default function PostForm({ post }) {
         return () => subscription.unsubscribe();
     }, [watch, slugTransform, setValue]);
 
-    if(loading){
-        return <div className="flex items-center justify-center min-h-screen bg-gray-400">
-        <div className="w-16 h-16 border-4 border-red-500 border-dashed rounded-full animate-spin"></div>
-      </div>
+    if (loading) {
+        <LoadingPage />
     }
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-col md:flex-row flex-wrap">
+        <form onSubmit={handleSubmit(submit)} className="flex flex-col md:flex-row flex-wrap text-white">
             <div className="w-full md:w-2/3 px-2">
                 <Input
                     label="Title :"
                     placeholder="Title"
-                    className="mb-4"
+                    className="mb-4 focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
                     {...register("title", { required: true })}
                 />
                 <Input
                     label="Slug :"
                     placeholder="Slug"
-                    className="mb-4"
+                    className="mb-4 focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
                     {...register("slug", { required: true })}
                     onInput={(e) => {
                         const transformedSlug = slugTransform(e.currentTarget.value);
                         setValue("slug", transformedSlug, { shouldValidate: true });
                     }}
-                    
+
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
@@ -113,24 +112,38 @@ export default function PostForm({ post }) {
                 <Input
                     label="Featured Image :"
                     type="file"
-                    className="mb-4"
-                    size="100px"
                     accept="image/png, image/jpg, image/jpeg, image/gif"
+                    size="100px"
+                    className="mb-4 
+               bg-[#210766] 
+               focus:bg-[#210766] 
+               text-white 
+               border border-gray-400 
+               placeholder:bg-[#210766] 
+               file:bg-blue-600 
+               file:hover:bg-blue-700 
+               file:text-white 
+               file:border-0 
+               file:px-4 
+               file:py-2 
+               file:rounded 
+               file:cursor-pointer"
                     {...register("image", { required: !post })}
                 />
+
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={databaseService.getFilePreview(post.featuredImage)}
+                            src={databaseService.getFileView(post.featuredImage)}
                             alt={post.title}
-                            className="rounded-lg"
+                            className="rounded-lg focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
                         />
                     </div>
                 )}
                 <Select
                     options={["active", "inactive"]}
                     label="Status"
-                    className="mb-4"
+                    className="mb-4 focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
                     {...register("status", { required: true })}
                 />
                 <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">

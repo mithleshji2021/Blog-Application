@@ -3,6 +3,7 @@ import databaseService from '../appwrite/database'
 import { Container } from '../components'
 import { PostCard } from '../components'
 import { useSelector } from 'react-redux'
+import LoadingPage from './LoadingPage'
 
 function Home() {
     const [posts, setPosts] = useState([])
@@ -24,22 +25,23 @@ function Home() {
     },[])
 
     if(isLoading){
-        return <div className="flex items-center justify-center min-h-screen bg-gray-400">
-        <div className="w-16 h-16 border-4 border-red-500 border-dashed rounded-full animate-spin"></div>
-      </div>
+        <LoadingPage/>
     }
 
     if(!userStatus){
         return(
             <div className='w-full py-8 mt-4 text-center'>
                 <Container>
-                    <div className='flex flex-wrap'>
+                    <div className=' flex justify-center'>
+                        <img className='rounded-xl w-[50rem]' src="src/assets/Purple and Black Metallic Blob Tech Company Presentation_20250608_172119_0000.jpg" alt="Login to read post" />
+                    </div>
+                    {/* <div className='flex flex-wrap'>
                         <div className='p-2 w-full'>
-                        <h1 className='text-2xl font-bold hover:text-gray-500'>
+                        <h1 className='text-2xl text-slate-400 font-bold hover:text-white cursor-pointer'>
                             Login to read posts
                         </h1>
                         </div>
-                    </div>
+                    </div> */}
                 </Container>
 
             </div>

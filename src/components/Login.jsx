@@ -6,6 +6,7 @@ import { Input, Button, Logo } from './index'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
+import LoadingPage from '../pages/LoadingPage'
 
 function Login() {
     const [error, setError] = useState('')
@@ -38,27 +39,23 @@ function Login() {
     }
 
     if (isLoading) {
-        return <div className="flex items-center justify-center min-h-screen bg-gray-400">
-            <div className="w-16 h-16 border-4 border-red-500 border-dashed rounded-full animate-spin">
-
-            </div>
-        </div>
+        <LoadingPage/>
     }
     return (
         <div className='flex items-center justify-center w-full'>
-            <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
+            <div className={`mx-auto w-full max-w-lg bg-[#210766] rounded-xl px-10 pb-8 pt-4 border border-black/10`}>
 
                 <div className='flex justify-end'>
-                    <span onClick={() => navigate('/')} className='flex justify-end  cursor-pointer  rounded-full text-white w-[1.5rem] pr-2 bg-gray-400'>X</span>
+                    <span onClick={() => navigate('/')} className='flex justify-end  cursor-pointer  rounded-full text-white w-[1.5rem] pr-2  bg-[#370cac]'>X</span>
                 </div>
                 <div className='mb-2 flex justify-center'>
-                    <span className='inline-block w-full max-w-[100px]'>
+                    <span className='inline-block w-full max-w-[8rem]'>
                         <Logo width="100%" />
                     </span>
 
                 </div>
-                <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
-                <p className="mt-2 text-center text-base text-black/60">
+                <h2 className="text-center text-2xl font-bold leading-tight text-slate-400">Sign in to your account</h2>
+                <p className="mt-2 text-center text-base text-slate-400">
                     Don&apos;t have any account?&nbsp;
                     <Link
                         to="/signup"
@@ -74,6 +71,7 @@ function Login() {
                     <div className='space-y-5'>
                         <Input
                             label="Email"
+                            className="focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
                             placeholder="Enter your email"
                             type="email"
                             name="email"
@@ -86,6 +84,7 @@ function Login() {
                         />
                         <Input
                             label="Password"
+                            className="focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
                             placeholder="Enter your password"
                             type="password"
                             name="password"

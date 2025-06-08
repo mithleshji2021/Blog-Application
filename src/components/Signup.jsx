@@ -6,6 +6,7 @@ import authService from '../appwrite/auth'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import {login} from '../../store/authSlice'
+import LoadingPage from '../pages/LoadingPage'
 
 
 function Signup() {
@@ -42,28 +43,26 @@ function Signup() {
     }
 
     if(isLoading){
-        return <div className="flex items-center justify-center min-h-screen bg-gray-400">
-        <div className="w-16 h-16 border-4 border-red-500 border-dashed rounded-full animate-spin"></div>
-      </div>
+        <LoadingPage/>
     }
     
     return (
         <div className='flex justify-center items-center '>
-            <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
+            <div className={`mx-auto w-full max-w-lg bg-[#210766] rounded-xl pt-4 px-10 pb-8 border border-black/10`}>
 
                 <div className='flex justify-end'>
-                    <span onClick={() => navigate('/')} className='flex justify-end  cursor-pointer  rounded-full text-white w-[1.5rem] pr-2 bg-gray-400'>X</span>
+                    <span onClick={() => navigate('/')} className='flex justify-end  cursor-pointer  rounded-full text-white w-[1.5rem] pr-2 bg-[#350ba7] '>X</span>
                 </div>
 
                 <div className='flex  justify-center  mb-2'>
-                    <span className='inline-block w-full max-w-[100px]'>
+                    <span className='inline-block w-full max-w-[8rem]'>
                         <Logo width="100%" />
                     </span>
                 </div>
 
-                <h2 className="text-center text-2xl font-bold leading-tight ">Sign up to create account</h2>
+                <h2 className="text-center text-2xl font-bold leading-tight text-gray-400">Sign up to create account</h2>
 
-                <p className="mt-2 text-center text-base text-black/60">
+                <p className="mt-2 text-center text-base text-slate-400">
                     Already have an account?&nbsp;
                     <Link
                         to="/login"
@@ -80,12 +79,14 @@ function Signup() {
 
                         <Input
                             label="Name"
+                            className="focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
                             placeholder="Enter your name"
                             {...register("name", { required: true })}
                         />
 
                         <Input
                             label="Email"
+                            className="focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
                             placeholder="Enter your email"
                             type="email"
                             name="email"
@@ -99,6 +100,7 @@ function Signup() {
 
                         <Input
                             label="Password"
+                            className="focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
                             placeholder="Enter your password"
                             type="password"
                             name="password"
