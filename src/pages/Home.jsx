@@ -4,6 +4,7 @@ import { Container } from '../components'
 import { PostCard } from '../components'
 import { useSelector } from 'react-redux'
 import LoadingPage from './LoadingPage'
+import homeImage from '../../src/images/homeImage'
 
 function Home() {
     const [posts, setPosts] = useState([])
@@ -33,7 +34,7 @@ function Home() {
             <div className='w-full py-8 mt-4 text-center'>
                 <Container>
                     <div className=' flex justify-center'>
-                        <img className='rounded-xl w-[50rem]' src="images/home-image" alt="Login to read post" />
+                        <img className='rounded-xl w-[50rem]' src={homeImage} alt="Login to read post" />
                     </div>
                     {/* <div className='flex flex-wrap'>
                         <div className='p-2 w-full'>
