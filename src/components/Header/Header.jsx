@@ -99,7 +99,7 @@ function Header() {
         </nav>
         
         <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
-          <ul className='flex flex-col text-left  font-medium my-8 gap-2  bg-gray-500'>
+          <ul className='flex flex-col text-left  font-medium my-8 gap-2  bg-blue-800'>
 
             {navItems.map((item) => (
               item.active ? (
@@ -112,7 +112,7 @@ function Header() {
             ))}
             {
               authStatus && (
-                <li onClick={() => setIsMenuOpen(false)} className='text-center bg-slate-700 rounded-lg '>
+                <li onClick={() => setIsMenuOpen(false)} className='text-center bg-red-700 rounded-lg '>
                   <LogoutBtn />
                 </li>
               )

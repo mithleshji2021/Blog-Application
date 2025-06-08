@@ -14,17 +14,25 @@ function Home() {
 
 
     useEffect(() => {
-        if (userStatus) {
-            databaseService.getPosts().then((posts) => {
-                if (posts) {
-                    setPosts(posts.documents)
+        const fetchPosts = async () => {
+            if (userStatus) {
+                try {
+                    const posts = await databaseService.getPosts();
+                    if (posts) {
+                        setPosts(posts.documents);
+                    }
+                } catch (error) {
+                    console.error("Error fetching posts:", error);
                 }
+            }
+            // ✅ Always end loading, even if userStatus is false
+            setIsLoading(false);
+        };
 
-            })
+        fetchPosts();
+    }, [userStatus]);
 
-            setIsLoading(false)
-        }
-    }, [])
+
 
     if (isLoading) {
         return <LoadingPage />
