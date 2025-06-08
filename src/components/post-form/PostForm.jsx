@@ -83,7 +83,7 @@ export default function PostForm({ post }) {
     }, [watch, slugTransform, setValue]);
 
     if (loading) {
-        <LoadingPage />
+        return <LoadingPage />
     }
 
     return (
@@ -92,13 +92,13 @@ export default function PostForm({ post }) {
                 <Input
                     label="Title :"
                     placeholder="Title"
-                    className="mb-4 focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
+                    className="mb-4 bg-[#28087d] text-white border border-gray-400 focus:bg-[#28087d]"
                     {...register("title", { required: true })}
                 />
                 <Input
                     label="Slug :"
                     placeholder="Slug"
-                    className="mb-4 focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
+                    className="mb-4 focus:bg-[#28087d] bg-[#28087d] text-white border border-gray-400"
                     {...register("slug", { required: true })}
                     onInput={(e) => {
                         const transformedSlug = slugTransform(e.currentTarget.value);
@@ -108,6 +108,7 @@ export default function PostForm({ post }) {
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
+
             <div className="w-full md:w-1/3 px-2">
                 <Input
                     label="Featured Image :"
@@ -115,11 +116,11 @@ export default function PostForm({ post }) {
                     accept="image/png, image/jpg, image/jpeg, image/gif"
                     size="100px"
                     className="mb-4 
-               bg-[#210766] 
-               focus:bg-[#210766] 
+               bg-[#28087d] 
+               focus:bg-[#28087d] 
                text-white 
                border border-gray-400 
-               placeholder:bg-[#210766] 
+               placeholder:bg-[#28087d] 
                file:bg-blue-600 
                file:hover:bg-blue-700 
                file:text-white 
@@ -136,14 +137,14 @@ export default function PostForm({ post }) {
                         <img
                             src={databaseService.getFileView(post.featuredImage)}
                             alt={post.title}
-                            className="rounded-lg focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
+                            className="rounded-lg focus:bg-[#28087d] bg-[#28087d] text-white border border-gray-400"
                         />
                     </div>
                 )}
                 <Select
                     options={["active", "inactive"]}
                     label="Status"
-                    className="mb-4 focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
+                    className="mb-4 focus:bg-[#28087d] bg-[#28087d] text-white border border-gray-400"
                     {...register("status", { required: true })}
                 />
                 <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
