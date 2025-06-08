@@ -79,14 +79,14 @@ function Signup() {
 
                         <Input
                             label="Name"
-                            className="focus:bg-[#210766] bg-[#210766]  border border-gray-400"
+                            className="focus:bg-[#210766] bg-[#210766] text-white  border border-gray-400"
                             placeholder="Enter your name"
                             {...register("name", { required: true })}
                         />
 
                         <Input
                             label="Email"
-                            className="focus:bg-[#210766] bg-[#210766]  border border-gray-400"
+                            className="focus:bg-[#210766] bg-[#210766] text-white border border-gray-400"
                             placeholder="Enter your email"
                             type="email"
                             name="email"
@@ -100,7 +100,7 @@ function Signup() {
 
                         <Input
                             label="Password"
-                            className="focus:bg-[#210766] bg-[#210766]  border border-gray-400"
+                            className="focus:bg-[#210766] bg-[#210766] text-white  border border-gray-400"
                             placeholder="Enter your password"
                             type="password"
                             name="password"
