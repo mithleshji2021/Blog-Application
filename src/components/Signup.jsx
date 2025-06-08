@@ -43,7 +43,7 @@ function Signup() {
     }
 
     if(isLoading){
-        <LoadingPage/>
+        return <LoadingPage/>
     }
     
     return (

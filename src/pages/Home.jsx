@@ -26,7 +26,7 @@ function Home() {
     },[])
 
     if(isLoading){
-        <LoadingPage/>
+        return <LoadingPage/>
     }
 
     if(!userStatus){

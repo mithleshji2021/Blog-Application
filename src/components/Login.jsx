@@ -39,7 +39,7 @@ function Login() {
     }
 
     if (isLoading) {
-        <LoadingPage/>
+        return <LoadingPage/>
     }
     return (
         <div className='flex items-center justify-center w-full'>
