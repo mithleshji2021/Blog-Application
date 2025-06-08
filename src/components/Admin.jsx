@@ -2,7 +2,7 @@ import React from 'react'
 
 function Admin() {
   return (
-    <div className=''>Admin mail : two@two.com pass: two12345678</div>
+    <div className='text-red-600'>Only admin can do : create post, update post & delete post</div>
   )
 }
 
